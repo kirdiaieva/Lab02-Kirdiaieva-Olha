@@ -32,7 +32,6 @@ module.exports = {
             },
         ],
     },
-    // ...previous Webpack config...
     plugins: [
         new MiniCssExtractPlugin({
             filename: "css/[name].css",
