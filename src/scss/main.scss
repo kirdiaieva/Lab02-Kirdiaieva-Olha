@@ -30,6 +30,7 @@ body{
 .header, .footer{
   width: 100%;
   height: $small;
+  padding: 0 $small/2;
   color: white;
   background-color: $dark;
   line-height: $small;
@@ -58,10 +59,15 @@ body{
 
 .categories-button, .basket-button{
   display: inline-block;
-  cursor: pointer;
-  border: 5px solid $pop;
+  line-height: $small;
+  text-align: center;
+  //cursor: pointer;
   width: $small;
   height: $small;
+}
+
+.icon{
+  display: inline-block;
 }
 
 .categories-button:hover, .basket-button:hover{
@@ -70,14 +76,36 @@ body{
 
 .categories-button{
   float: left;
+  .icon{
+    width: $small/2;
+    height: $small/2;
+  }
 }
 
 .categories-list{
+  display: none;
+  position: absolute;
+  top: $small;
+  background-color: $pop;
+  padding: $small/2;
+  margin: 0;
+}
 
+.category{
+  display: block;
+  text-align: left;
+}
+
+.categories-button:hover .categories-list {
+  display: block;
 }
 
 .basket-button{
   float: right;
+  .icon{
+    width: $small*3/4;
+    height: $small*3/4;
+  }
 }
 
 .heading{
@@ -89,6 +117,7 @@ body{
 }
 
 .product-card{
+  display: inline-block;
   width: $card;
   height: $card;
   background-color: $middle;
