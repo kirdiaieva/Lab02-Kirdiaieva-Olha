@@ -11,17 +11,6 @@ $card: 300px;
   box-sizing: border-box;
 }
 
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-  position: relative;
-}
-
 body{
   margin: 0;
   background-color: $light;
@@ -43,12 +32,8 @@ body{
 }
 
 .wrapper{
-  padding-top: $small;
-  min-height: 100vh;
-  overflow: hidden;
-  display: block;
   position: relative;
-  padding-bottom: $small;
+  min-height: 100vh;
 }
 
 .footer{
@@ -65,7 +50,7 @@ body{
 }
 
 .icon{
-  display: inline;
+  display: inline-block;
 }
 
 .categories-button:hover, .basket-button:hover{
@@ -93,6 +78,7 @@ body{
 .category{
   display: block;
   text-align: left;
+  cursor: pointer;
 }
 
 .categories-button:hover #categories-list {
@@ -115,21 +101,28 @@ body{
 
 }
 
-.product-list{
-
+#product-list{
+  text-align: center;
+  padding: $small 0;
 }
 
 .product-card{
   display: inline-block;
   width: $card;
   height: $card;
-  background-color: $middle;
+  border: $small solid $middle;
+  margin: 10px;
+  background-color: white;
 }
 
-.product-pic{
+.product-image{
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.add-to-cart-button{
+
 }
 
 .product-window{

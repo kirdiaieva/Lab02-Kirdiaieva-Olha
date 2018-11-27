@@ -16,6 +16,14 @@ $.ajax({
     url: "http://nit.tron.net.ua/api/product/list"
 }).then(function (result) {
     products = result;
+    for(var i = 0; i<products.length; i++){
+        createProductCard(products[i].image_url);
+        /*addProductImage();
+        addProductName(products[i].name);
+        addProductPrice(products[i].price);
+        addProductNewPrice();
+        addAddToCartButton();*/
+    }
 });
 
 var category;
@@ -24,8 +32,8 @@ function printCategory(value) {
     document.getElementById("categories-list").innerHTML += category;
 }
 
-var product;
-function createProduct(value){
-    product = "<div class='product-card'>" + value + "</div>";
-    document.getElementById("product-list").innerHTML += product;
+var productCard;
+function createProductCard(image){
+    productCard = "<div class='product-card'><img class='product-image' src='"+ image +"'></div>";
+    document.getElementById("product-list").innerHTML += productCard;
 }
