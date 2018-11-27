@@ -59,15 +59,13 @@ body{
 
 .categories-button, .basket-button{
   display: inline-block;
-  line-height: $small;
   text-align: center;
-  //cursor: pointer;
   width: $small;
   height: $small;
 }
 
 .icon{
-  display: inline-block;
+  display: inline;
 }
 
 .categories-button:hover, .basket-button:hover{
@@ -82,11 +80,12 @@ body{
   }
 }
 
-.categories-list{
+#categories-list, .basket-window{
   display: none;
   position: absolute;
   top: $small;
-  background-color: $pop;
+  background-color: $light;
+  color: $dark;
   padding: $small/2;
   margin: 0;
 }
@@ -96,7 +95,11 @@ body{
   text-align: left;
 }
 
-.categories-button:hover .categories-list {
+.categories-button:hover #categories-list {
+  display: block;
+}
+
+.basket-button:hover .basket-window {
   display: block;
 }
 
@@ -121,13 +124,14 @@ body{
   width: $card;
   height: $card;
   background-color: $middle;
-
 }
 
-.product-page{
-
+.product-pic{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.basket-page{
+.product-window{
 
 }
