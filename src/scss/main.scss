@@ -5,8 +5,9 @@ $pop: #9C528B;
 
 $tiny: 10px;
 $small: 50px;
-$card: 300px;
-$image:200px;
+$large: 200px;
+$card-width: 300px;
+$card-height: 400px;
 
 *{
   font-family: "Segoe UI", sans-serif;
@@ -75,7 +76,7 @@ body{
 
 #categories-list, #basket-window{
   display: none;
-  width: $card;
+  width: $large;
   position: fixed;
   top: $small;
   background-color: white;
@@ -115,8 +116,9 @@ body{
   display: inline-block;
   position: relative;
   text-align: center;
-  width: $card;
-  height: $card;
+  width: $card-width;
+  height: $card-height;
+  padding: $tiny;
   margin: $tiny;
   background-color: white;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
@@ -125,8 +127,8 @@ body{
 .image-container{
   display: inline-block;
   background-color: white;
-  width: $image;
-  height: $image;
+  width: $large;
+  height: $large;
 }
 
 .product-image{
@@ -134,40 +136,43 @@ body{
   height: 100%;
   object-fit: contain;
   padding: $tiny;
+  cursor: pointer;
 }
 
 .product-name{
   display: block;
 }
 
-.product-price{
-  position: absolute;
+.product-price, .old-product-price{
   top: $tiny;
-  left: $tiny;
-  padding: $tiny;
+  height: $small;
+  line-height: $small;
+  position: absolute;
+  padding: 0 $tiny;
   color: white;
-  background-color: $pop;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
+.product-price{
+  left: $tiny;
+  background-color: $pop;
+}
+
 .old-product-price{
-  position: absolute;
-  top: $tiny;
   right: $tiny;
-  padding: $tiny;
-  color: white;
   background-color: $middle;
   text-decoration: line-through;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .add-to-cart-button{
   position: absolute;
+  left: 0;
   bottom: 0;
   width: 100%;
+  height: $small;
+  line-height: $small;
   color: white;
   background-color: $dark;
-  padding: $tiny;
   cursor: pointer;
 }
 

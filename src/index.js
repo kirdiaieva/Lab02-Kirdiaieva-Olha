@@ -41,6 +41,7 @@ function createProductCard(){
 }
 
 var productCards = document.getElementsByClassName("product-card");
+
 function addProductImage(id, image) {
     productCards[id].innerHTML += "<div class='image-container'><img class='product-image' src='" + image + "'></div>";
 }
@@ -51,11 +52,11 @@ function addProductName(id, name) {
 
 function addProductPrice(id, price, newPrice){
     if (newPrice!==null) {
-        productCards[id].innerHTML += "<span class='product-price'>" + newPrice + " грн</span>";
-        productCards[id].innerHTML += "<span class='old-product-price'>" + price + " грн</span>";
+        productCards[id].innerHTML += "<span class='product-price'>" + newPrice + " UAH</span>";
+        productCards[id].innerHTML += "<span class='old-product-price'>" + price + " UAH</span>";
     }
     else{
-        productCards[id].innerHTML += "<span class='product-price'>" + price + " грн</span>";
+        productCards[id].innerHTML += "<span class='product-price'>" + price + " UAH</span>";
     }
 }
 
