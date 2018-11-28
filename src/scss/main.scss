@@ -6,8 +6,7 @@ $pop: #9C528B;
 $tiny: 10px;
 $small: 50px;
 $card: 300px;
-
-//TODO add button "all products"
+$image:200px;
 
 *{
   font-family: "Segoe UI", sans-serif;
@@ -86,12 +85,13 @@ body{
 }
 
 #categories-list{
+  z-index: 990;
   left: 0;
 }
 
 #basket-window{
+  z-index: 980;
   right: 0;
-
 }
 
 .category{
@@ -105,23 +105,27 @@ body{
   color: white;
 }
 
-.heading{
-
-}
-
 #product-list{
   text-align: center;
   padding: $small+$tiny 0;
-
 }
 
 .product-card{
   display: inline-block;
+  position: relative;
+  text-align: center;
   width: $card;
   height: $card;
-  border: $small solid $middle;
   margin: $tiny;
   background-color: white;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
+}
+
+.image-container{
+  display: inline-block;
+  background-color: white;
+  width: $image;
+  height: $image;
 }
 
 .product-image{
@@ -131,8 +135,35 @@ body{
   padding: $tiny;
 }
 
-.add-to-cart-button{
+.product-name{
+  display: block;
+}
 
+.product-price{
+  position: absolute;
+  top: $tiny;
+  left: $tiny;
+  padding: $tiny;
+  color: white;
+  background-color: $pop;
+}
+
+.old-product-price{
+  text-decoration: line-through;
+}
+
+.add-to-cart-button{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  background-color: $dark;
+  padding: $tiny;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover{
+  background-color: $pop;
 }
 
 .product-window{

@@ -2,6 +2,8 @@ import './scss/main.scss';
 
 var categories;
 var products;
+var category;
+var productCard;
 
 $.ajax({
     url: "http://nit.tron.net.ua/api/category/list"
@@ -17,28 +19,48 @@ $.ajax({
 }).then(function (result) {
     products = result;
     for(var i = 0; i<products.length; i++){
-        createProductCard(products[i].image_url);
-        /*addProductImage();
-        addProductName(products[i].name);
-        addProductPrice(products[i].price);
-        addProductNewPrice();
-        addAddToCartButton();*/
+        createProductCard();
+        addProductImage(i, products[i].image_url);
+        addProductName(i, products[i].name);
+        addProductPrice(i, products[i].price, products[i].special_price);
+        addAddToCartButton(i);
     }
 });
 
 $("#categories-button").click(showCategories);
 $("#basket-button").click(showBasket);
 
-var category;
 function printCategory(value) {
     category = "<span class='category'>" + value + "</span>";
     document.getElementById("categories-list").innerHTML += category;
 }
 
-var productCard;
-function createProductCard(image){
-    productCard = "<div class='product-card'><img class='product-image' src='"+ image +"'></div>";
+function createProductCard(){
+    productCard = "<div class='product-card'></div>";
     document.getElementById("product-list").innerHTML += productCard;
+}
+
+var productCards = document.getElementsByClassName("product-card");
+function addProductImage(id, image) {
+    productCards[id].innerHTML += "<div class='image-container'><img class='product-image' src='" + image + "'></div>";
+}
+
+function addProductName(id, name) {
+    productCards[id].innerHTML += "<span class='product-name'>" + name + "</span>";
+}
+
+function addProductPrice(id, price, newPrice){
+    if (newPrice!==null) {
+        productCards[id].innerHTML += "<span class='product-price'>" + newPrice + " грн</span>";
+        productCards[id].innerHTML += "<span class='old-product-price'>" + price + " грн</span>";
+    }
+    else{
+        productCards[id].innerHTML += "<span class='product-price'>" + price + " грн</span>";
+    }
+}
+
+function addAddToCartButton(id){
+    productCards[id].innerHTML += "<div class='add-to-cart-button'> Add to basket </div>";
 }
 
 const categoriesList = document.getElementById("categories-list");
