@@ -6,6 +6,7 @@ $pop: #9C528B;
 $tiny: 10px;
 $small: 50px;
 $large: 200px;
+$image: 250px;
 $card-width: 300px;
 $card-height: 400px;
 
@@ -124,11 +125,15 @@ body{
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
+.product-card:hover .product-name{
+  display: block;
+}
+
 .image-container{
   display: inline-block;
   background-color: white;
-  width: $large;
-  height: $large;
+  width: $image;
+  height: $image;
 }
 
 .product-image{
@@ -140,27 +145,31 @@ body{
 }
 
 .product-name{
-  display: block;
-}
-
-.product-price, .old-product-price{
-  top: $tiny;
-  height: $small;
-  line-height: $small;
+  display: none;
   position: absolute;
-  padding: 0 $tiny;
+  width: $card-width - $tiny - $tiny;
+  padding: $tiny;
+  top: $tiny;
+  background-color: $middle;
   color: white;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
+.product-price, .old-product-price{
+  float: left;
+  height: $small;
+  line-height: $small;
+  padding: 0 $tiny;
+}
+
 .product-price{
-  left: $tiny;
+  color: white;
   background-color: $pop;
+
 }
 
 .old-product-price{
-  right: $tiny;
-  background-color: $middle;
+  color: $dark;
   text-decoration: line-through;
 }
 
