@@ -6,9 +6,11 @@ $pop: #9C528B;
 $tiny: 10px;
 $small: 50px;
 $large: 200px;
+$larger: 350px;
 $image: 250px;
 $card-width: 300px;
 $card-height: 450px;
+
 
 *{
   font-family: "Segoe UI", sans-serif;
@@ -77,7 +79,6 @@ body{
 
 #categories-list, #basket-window{
   display: none;
-  width: $large;
   position: fixed;
   top: $small;
   background-color: white;
@@ -88,13 +89,19 @@ body{
 }
 
 #categories-list{
-  z-index: 990;
+  z-index: 980;
   left: 0;
+  width: $large;
 }
 
-#basket-window{
-  z-index: 980;
+#basket-window {
+  z-index: 990;
   right: 0;
+  width: $larger;
+}
+
+.basket-item{
+  padding: $tiny;
 }
 
 .category{
@@ -165,7 +172,7 @@ body{
   text-decoration: line-through;
 }
 
-.add-to-cart-button{
+.add-to-basket-button{
   position: absolute;
   left: 0;
   bottom: 0;
@@ -177,7 +184,7 @@ body{
   cursor: pointer;
 }
 
-.add-to-cart-button:hover{
+.add-to-basket-button:hover{
   background-color: $pop;
 }
 

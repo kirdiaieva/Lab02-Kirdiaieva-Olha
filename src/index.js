@@ -5,6 +5,11 @@ var products;
 var category;
 var productCard;
 
+//show windows on click
+$("#categories-button").click(showCategories);
+$("#basket-button").click(showBasket);
+
+//get all categories
 $.ajax({
     url: "http://nit.tron.net.ua/api/category/list"
 }).then(function (result) {
@@ -14,6 +19,7 @@ $.ajax({
     }
 });
 
+//show all products
 $.ajax({
     url: "http://nit.tron.net.ua/api/product/list"
 }).then(function (result) {
@@ -23,15 +29,12 @@ $.ajax({
         addProductPrice(i, products[i].price, products[i].special_price);
         addProductImage(i, products[i].image_url);
         addProductName(i, products[i].name);
-        addAddToCartButton(i);
+        createAddToBasketButton(i);
     }
 });
 
-$("#categories-button").click(showCategories);
-$("#basket-button").click(showBasket);
-
-function printCategory(value) {
-    category = "<span class='category'>" + value + "</span>";
+function printCategory(name) {
+    category = "<span class='category'>" + name + "</span>";
     document.getElementById("categories-list").innerHTML += category;
 }
 
@@ -60,12 +63,13 @@ function addProductPrice(id, price, newPrice){
     }
 }
 
-function addAddToCartButton(id){
-    productCards[id].innerHTML += "<div class='add-to-cart-button'> Add to basket </div>";
+function createAddToBasketButton(id){
+    productCards[id].innerHTML += "<div class='add-to-basket-button'> Add to basket </div>";
 }
 
 const categoriesList = document.getElementById("categories-list");
 var displayCategories = false;
+
 function showCategories(){
     if (!displayCategories){
         categoriesList.style.display = "block";
@@ -79,6 +83,7 @@ function showCategories(){
 
 const basketWindow = document.getElementById("basket-window");
 var displayBasket = false;
+
 function showBasket(){
     if (!displayBasket){
         basketWindow.style.display = "block";
