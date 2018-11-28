@@ -26,15 +26,17 @@ body {
 .footer {
   position: absolute;
   bottom: 0;
-  text-align: right; }
+  text-align: right;
+  padding: 0 10px; }
 
-.categories-button, .basket-button {
+#categories-button, #basket-button {
   display: inline-block;
   text-align: center;
   width: 50px;
-  height: 50px; }
+  height: 50px;
+  cursor: pointer; }
 
-.categories-button:hover, .basket-button:hover {
+#categories-button:hover, #basket-button:hover {
   background-color: #9C528B; }
 
 .icon {
@@ -43,20 +45,22 @@ body {
   height: 50px;
   padding: 10px; }
 
-.categories-button {
+#categories-button {
   float: left; }
 
-.basket-button {
+#basket-button {
   float: right; }
 
 #categories-list, #basket-window {
+  display: none;
   width: 300px;
   position: fixed;
   top: 50px;
   background-color: white;
   color: #1D1E2C;
   padding: 10px;
-  text-align: left; }
+  text-align: left;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1); }
 
 #categories-list {
   left: 0; }
@@ -67,16 +71,11 @@ body {
 .category {
   display: block;
   cursor: pointer;
-  padding: 10px 0; }
+  padding: 10px; }
 
 .category:hover {
-  background-color: #9C528B; }
-
-.categories-button:hover #categories-list {
-  display: block; }
-
-.basket-button:hover #basket-window {
-  display: block; }
+  background-color: #9C528B;
+  color: white; }
 
 #product-list {
   text-align: center;

@@ -8,7 +8,7 @@ $.ajax({
 }).then(function (result) {
     categories = result;
     for(var i=0; i<categories.length; i++){
-        printCategory(categories[i].description)
+        printCategory(categories[i].name)
     }
 });
 
@@ -26,6 +26,9 @@ $.ajax({
     }
 });
 
+$("#categories-button").click(showCategories);
+$("#basket-button").click(showBasket);
+
 var category;
 function printCategory(value) {
     category = "<span class='category'>" + value + "</span>";
@@ -36,4 +39,30 @@ var productCard;
 function createProductCard(image){
     productCard = "<div class='product-card'><img class='product-image' src='"+ image +"'></div>";
     document.getElementById("product-list").innerHTML += productCard;
+}
+
+const categoriesList = document.getElementById("categories-list");
+var displayCategories = false;
+function showCategories(){
+    if (!displayCategories){
+        categoriesList.style.display = "block";
+        displayCategories = true;
+    }
+    else{
+        categoriesList.style.display = "none";
+        displayCategories = false;
+    }
+}
+
+const basketWindow = document.getElementById("basket-window");
+var displayBasket = false;
+function showBasket(){
+    if (!displayBasket){
+        basketWindow.style.display = "block";
+        displayBasket = true;
+    }
+    else{
+        basketWindow.style.display = "none";
+        displayBasket = false;
+    }
 }

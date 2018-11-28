@@ -7,6 +7,8 @@ $tiny: 10px;
 $small: 50px;
 $card: 300px;
 
+//TODO add button "all products"
+
 *{
   font-family: "Segoe UI", sans-serif;
   box-sizing: border-box;
@@ -41,16 +43,18 @@ body{
   position: absolute;
   bottom: 0;
   text-align: right;
+  padding: 0 $tiny;
 }
 
-.categories-button, .basket-button{
+#categories-button, #basket-button{
   display: inline-block;
   text-align: center;
   width: $small;
   height: $small;
+  cursor: pointer;
 }
 
-.categories-button:hover, .basket-button:hover{
+#categories-button:hover, #basket-button:hover{
   background-color: $pop;
 }
 
@@ -61,16 +65,16 @@ body{
   padding: $tiny;
 }
 
-.categories-button{
+#categories-button{
   float: left;
 }
 
-.basket-button{
+#basket-button{
   float: right;
 }
 
 #categories-list, #basket-window{
-  //display: none;
+  display: none;
   width: $card;
   position: fixed;
   top: $small;
@@ -78,6 +82,7 @@ body{
   color: $dark;
   padding: $tiny;
   text-align: left;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 #categories-list{
@@ -92,19 +97,12 @@ body{
 .category{
   display: block;
   cursor: pointer;
-  padding: $tiny 0;
+  padding: $tiny;
 }
 
 .category:hover{
   background-color: $pop;
-}
-
-.categories-button:hover #categories-list {
-  display: block;
-}
-
-.basket-button:hover #basket-window {
-  display: block;
+  color: white;
 }
 
 .heading{
