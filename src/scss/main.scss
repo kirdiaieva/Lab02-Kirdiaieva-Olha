@@ -23,6 +23,7 @@ body{
   color: white;
   background-color: $dark;
   line-height: $small;
+  overflow: hidden;
 }
 
 .header{
@@ -49,6 +50,10 @@ body{
   height: $small;
 }
 
+.categories-button:hover, .basket-button:hover{
+  background-color: $pop;
+}
+
 .icon{
   display: inline-block;
   width: $small;
@@ -56,28 +61,42 @@ body{
   padding: $tiny;
 }
 
-.categories-button:hover, .basket-button:hover{
-  background-color: $pop;
-}
-
 .categories-button{
   float: left;
 }
 
+.basket-button{
+  float: right;
+}
+
 #categories-list, #basket-window{
-  display: none;
-  position: absolute;
+  //display: none;
+  width: $card;
+  position: fixed;
   top: $small;
   background-color: white;
   color: $dark;
-  padding: $small/2;
-  margin: 0;
+  padding: $tiny;
+  text-align: left;
+}
+
+#categories-list{
+  left: 0;
+}
+
+#basket-window{
+  right: 0;
+
 }
 
 .category{
   display: block;
-  text-align: left;
   cursor: pointer;
+  padding: $tiny 0;
+}
+
+.category:hover{
+  background-color: $pop;
 }
 
 .categories-button:hover #categories-list {
@@ -86,11 +105,6 @@ body{
 
 .basket-button:hover #basket-window {
   display: block;
-}
-
-.basket-button{
-  float: right;
-
 }
 
 .heading{
