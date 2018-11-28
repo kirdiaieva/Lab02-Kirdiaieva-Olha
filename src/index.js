@@ -20,9 +20,9 @@ $.ajax({
     products = result;
     for(var i = 0; i<products.length; i++){
         createProductCard();
+        addProductPrice(i, products[i].price, products[i].special_price);
         addProductImage(i, products[i].image_url);
         addProductName(i, products[i].name);
-        addProductPrice(i, products[i].price, products[i].special_price);
         addAddToCartButton(i);
     }
 });

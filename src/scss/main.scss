@@ -8,7 +8,7 @@ $small: 50px;
 $large: 200px;
 $image: 250px;
 $card-width: 300px;
-$card-height: 400px;
+$card-height: 450px;
 
 *{
   font-family: "Segoe UI", sans-serif;
@@ -122,11 +122,8 @@ body{
   padding: $tiny;
   margin: $tiny;
   background-color: white;
+  overflow: auto;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
-}
-
-.product-card:hover .product-name{
-  display: block;
 }
 
 .image-container{
@@ -145,14 +142,9 @@ body{
 }
 
 .product-name{
-  display: none;
-  position: absolute;
-  width: $card-width - $tiny - $tiny;
+  display: block;
   padding: $tiny;
-  top: $tiny;
-  background-color: $middle;
-  color: white;
-  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
+  color: $dark;
 }
 
 .product-price, .old-product-price{
