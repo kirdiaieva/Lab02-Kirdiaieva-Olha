@@ -31,6 +31,7 @@ body{
   position: fixed;
   z-index: 1000;
   text-align: center;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .wrapper{
@@ -146,10 +147,18 @@ body{
   padding: $tiny;
   color: white;
   background-color: $pop;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .old-product-price{
+  position: absolute;
+  top: $tiny;
+  right: $tiny;
+  padding: $tiny;
+  color: white;
+  background-color: $middle;
   text-decoration: line-through;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
 }
 
 .add-to-cart-button{
