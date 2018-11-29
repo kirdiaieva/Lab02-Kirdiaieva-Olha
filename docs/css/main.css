@@ -20,6 +20,10 @@ body {
   text-align: center;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1); }
 
+.heading {
+  font-family: "Abril Fatface", cursive;
+  font-size: 28px; }
+
 .wrapper {
   position: relative;
   min-height: 100vh; }
@@ -70,7 +74,8 @@ body {
 #basket-window {
   z-index: 990;
   right: 0;
-  width: 350px; }
+  width: 350px;
+  padding: 10px; }
 
 .basket-item {
   padding: 10px; }
@@ -145,4 +150,33 @@ body {
 
 .add-to-basket-button:hover {
   background-color: #9C528B; }
+
+#dim-screen {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1010; }
+
+#product-window {
+  display: none;
+  width: 300px;
+  height: 138px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -119px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+  z-index: 1020;
+  text-align: center;
+  box-sizing: content-box;
+  padding: 50px; }
+
+.tumbleweed-gif {
+  display: inline-block; }
 

@@ -10,6 +10,8 @@ $larger: 350px;
 $image: 250px;
 $card-width: 300px;
 $card-height: 450px;
+$product-window-width: 300px;
+$product-window-height: 138px;
 
 
 *{
@@ -36,6 +38,11 @@ body{
   z-index: 1000;
   text-align: center;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.10);
+}
+
+.heading{
+  font-family: "Abril Fatface", cursive;
+  font-size: 28px;
 }
 
 .wrapper{
@@ -98,6 +105,7 @@ body{
   z-index: 990;
   right: 0;
   width: $larger;
+  padding: $tiny;
 }
 
 .basket-item{
@@ -188,6 +196,34 @@ body{
   background-color: $pop;
 }
 
-.product-window{
+#dim-screen{
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.40);
+  z-index: 1010;
+}
 
+#product-window{
+  display: none;
+  width: $product-window-width;
+  height: $product-window-height;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: - (($product-window-width+($small*2))/2);
+  margin-top: - (($product-window-height+($small*2))/2);
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.10);
+  background-color: white;
+  z-index: 1020;
+  text-align: center;
+  box-sizing: content-box;
+  padding: $small;
+}
+
+.tumbleweed-gif{
+  display: inline-block;
 }

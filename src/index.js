@@ -2,18 +2,20 @@ import './scss/main.scss';
 
 var categories;
 var products;
-var category;
-var productCard;
+var displayCategories = false;
+var displayBasket = false;
 
 //show windows on click
 $("#categories-button").click(showCategories);
 $("#basket-button").click(showBasket);
+$("#dim-screen").click(hideProductWindow);
 
 //get all categories
 $.ajax({
     url: "http://nit.tron.net.ua/api/category/list"
 }).then(function (result) {
     categories = result;
+    categories.unshift({"id":"1","name":"All products","description":"All products"});
     for(var i=0; i<categories.length; i++){
         printCategory(categories[i].name)
     }
@@ -34,13 +36,11 @@ $.ajax({
 });
 
 function printCategory(name) {
-    category = "<span class='category'>" + name + "</span>";
-    document.getElementById("categories-list").innerHTML += category;
+    $("#categories-list").append("<span class='category'>" + name + "</span>");
 }
 
 function createProductCard(){
-    productCard = "<div class='product-card'></div>";
-    document.getElementById("product-list").innerHTML += productCard;
+    $("#product-list").append("<div class='product-card'></div>");
 }
 
 var productCards = document.getElementsByClassName("product-card");
@@ -63,34 +63,39 @@ function addProductPrice(id, price, newPrice){
     }
 }
 
-function createAddToBasketButton(id){
-    productCards[id].innerHTML += "<div class='add-to-basket-button'> Add to basket </div>";
+function createAddToBasketButton(){
+    $(".product-card").append("<div class='add-to-basket-button'>Add to basket</div>");
+    //productCards[id].innerHTML += "<div class='add-to-basket-button'> Add to basket </div>";
 }
 
-const categoriesList = document.getElementById("categories-list");
-var displayCategories = false;
+function showProductWindow() {
+    $("#dim-screen").css("display", "block");
+    $("#product-window").css("display", "block");
+}
+
+function hideProductWindow() {
+    $("#dim-screen").css("display", "none");
+    $("#product-window").css("display", "none");
+}
 
 function showCategories(){
     if (!displayCategories){
-        categoriesList.style.display = "block";
+        $("#categories-list").css("display", "block");
         displayCategories = true;
     }
     else{
-        categoriesList.style.display = "none";
+        $("#categories-list").css("display", "none");
         displayCategories = false;
     }
 }
 
-const basketWindow = document.getElementById("basket-window");
-var displayBasket = false;
-
 function showBasket(){
     if (!displayBasket){
-        basketWindow.style.display = "block";
+        $("#basket-window").css("display", "block");
         displayBasket = true;
     }
     else{
-        basketWindow.style.display = "none";
+        $("#basket-window").css("display", "none");
         displayBasket = false;
     }
 }
