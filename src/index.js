@@ -12,7 +12,7 @@ $("#dim-screen").click(hideProductWindow);
 
 //get all categories
 $.ajax({
-    url: "http://nit.tron.net.ua/api/category/list"
+    url: "https://nit.tron.net.ua/api/category/list"
 }).then(function (result) {
     categories = result;
     categories.unshift({"id":"1","name":"All products","description":"All products"});
@@ -23,7 +23,7 @@ $.ajax({
 
 //show all products
 $.ajax({
-    url: "http://nit.tron.net.ua/api/product/list"
+    url: "https://nit.tron.net.ua/api/product/list"
 }).then(function (result) {
     products = result;
     for(var i = 0; i<products.length; i++){
