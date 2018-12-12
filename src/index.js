@@ -6,66 +6,63 @@ var displayCategories = false;
 var displayBasket = false;
 
 //show windows on click
-$("#categories-button").click(showCategories);
-$("#basket-button").click(showBasket);
-$("#dim-screen").click(hideProductWindow);
+$("#categories-button").on('click', showCategories);
+$("#basket-button").on('click', showBasket);
+$("#dim-screen").on('click', hideProductWindow);
+$(document).on('click', '.product-image', showProductWindow);
 
-//get all categories
-$.ajax({
-    url: "https://nit.tron.net.ua/api/category/list"
-}).then(function (result) {
-    categories = result;
-    categories.unshift({"id":"1","name":"All products","description":"All products"});
-    for(var i=0; i<categories.length; i++){
-        printCategory(categories[i].name)
+function getAllCategories(){
+    $.ajax({
+        url: "https://nit.tron.net.ua/api/category/list"
+    }).then(function (result) {
+        categories = result;
+        categories.unshift({"id":"1","name":"All products","description":"All products"});
+        for(var i=0; i<categories.length; i++){
+            printCategory(categories[i].name, categories[i].id);
+        }
+        $('.category').on('click', function () {
+            showProducts(event.target.id.substring(9));
+        })
+    });
+}
+
+function printCategory(name, id) {
+    //document.getElementById("categories-list").innerHTML += "<span class='category' onclick='showProducts(" + id + ")'>" + name + "</span>";
+    $("#categories-list").append("<span class='category' id='category-" + id + "'>" + name + "</span>");
+
+}
+
+function showProducts(id){
+    $("#product-list").empty();
+    var url;
+    if (id==1)
+        url = "https://nit.tron.net.ua/api/product/list";
+    else{
+        url = "https://nit.tron.net.ua/api/product/list/category/" + id;
     }
+    $.ajax({
+        url: url
+    }).then(function (result) {
+        products = result;
+        for(var i = 0; i<products.length; i++){
+            createProductCard(i, products[i].price, products[i].special_price, products[i].image_url, products[i].name);
+        }
+    });
+}
+
+//show all products when document is ready
+$(document).ready(function(){
+    showProducts(1);
+    getAllCategories();
 });
 
-//show all products
-$.ajax({
-    url: "https://nit.tron.net.ua/api/product/list"
-}).then(function (result) {
-    products = result;
-    for(var i = 0; i<products.length; i++){
-        createProductCard();
-        addProductPrice(i, products[i].price, products[i].special_price);
-        addProductImage(i, products[i].image_url);
-        addProductName(i, products[i].name);
-        createAddToBasketButton(i);
-    }
-});
-
-function printCategory(name) {
-    $("#categories-list").append("<span class='category'>" + name + "</span>");
-}
-
-function createProductCard(){
-    $("#product-list").append("<div class='product-card'></div>");
-}
-
-var productCards = document.getElementsByClassName("product-card");
-
-function addProductImage(id, image) {
-    productCards[id].innerHTML += "<div class='image-container'><img class='product-image' src='" + image + "'></div>";
-}
-
-function addProductName(id, name) {
-    productCards[id].innerHTML += "<span class='product-name'>" + name + "</span>";
-}
-
-function addProductPrice(id, price, newPrice){
+function createProductCard(id, price, newPrice, image, name){
     if (newPrice!==null) {
-        productCards[id].innerHTML += "<span class='product-price'>" + newPrice + " UAH</span>";
-        productCards[id].innerHTML += "<span class='old-product-price'>" + price + " UAH</span>";
+        $("#product-list").append("<div class='product-card'><span class='product-price'>" + newPrice + " UAH</span><span class='old-product-price'>" + price + " UAH</span><div class='image-container'><img class='product-image' src='" + image + "'></div><span class='product-name'>" + name + "</span><div class='add-to-basket-button'>Add to basket</div></div>");
     }
     else{
-        productCards[id].innerHTML += "<span class='product-price'>" + price + " UAH</span>";
+        $("#product-list").append("<div class='product-card'><span class='product-price'>" + price + " UAH</span><div class='image-container'><img class='product-image' src='" + image + "'></div><span class='product-name'>" + name + "</span><div class='add-to-basket-button'>Add to basket</div></div>");
     }
-}
-
-function createAddToBasketButton(){
-    $(".product-card").append("<div class='add-to-basket-button'>Add to basket</div>");
-    //productCards[id].innerHTML += "<div class='add-to-basket-button'> Add to basket </div>";
 }
 
 function showProductWindow() {
